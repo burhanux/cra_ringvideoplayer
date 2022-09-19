@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
-}
+/* div.scroll {
+    margin: 4px, 4px;
+    padding: 4px;
+    background-color: #08c708;
+    width: 300px;
+    overflow: auto;
+    white-space: nowrap;
+} */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* #scroller {
+    overflow: scroll;
+    height: 150px;
+    width: 150px;
+    border: 5px dashed orange;
+  } */
+  
+  body{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  #container{
+    position: relative;
+    /* width: 300px; */
+    max-width: 300px;
+    /* overflow: overlay; */
+    margin:0 auto;
   }
-  to {
-    transform: rotate(360deg);
+  #scroller {
+    position: relative;
+    overflow: scroll;
+    white-space: nowrap;
+    width: 300px;
+    border: 2px dashed orange;
+    /* background-color: #08c708; */
+    z-index: 1;
+    /* padding:0; */
+    
   }
+  
+  #output {
+    padding: 1rem 0;
+  }
+
+  #anchor{
+    position: absolute;
+    height:80px;
+    width: 5px;
+    background-color:black;
+    left:50%;
+    top:-10px;
+    z-index: 99;
+    pointer-events: none;
+  }
+  
+
+  #scroller::-webkit-scrollbar {
+    background: transparent;
+    height: 0px;
+  }
+  #scroller::-webkit-scrollbar-thumb {
+    background: transparent;
+    height: 0px;
+  }
+  
+  /* #scroller::-webkit-scrollbar-track-piece
+  {
+     display:none;
+  } */
+
+.blocks{
+    display: flex;
+    padding:0;
 }
+
+.block-start{
+    cursor: pointer;
+    display: block;
+    background-color: red;
+    height: 50px;
+    min-width:148px;
+    border-right:2px solid black;
+    padding:0;
+  } 
+
+  .block-end{
+    cursor: pointer;
+    display: block;
+    background-color: red;
+    height: 50px;
+    min-width:130px;
+    border-right:4px solid black;
+    padding:0;
+  } 
+
+
+
+.block{
+    cursor: pointer;
+    display: block;
+    background-color: blue;
+    height: 50px;
+    width:8px;
+    min-width:8px;
+    border-right:2px solid black;
+    padding:0;
+  }
