@@ -32,7 +32,8 @@ const Player = (props: any) => {
     };
 
     useEffect(() => {
-
+        // Reference: https://codepen.io/thenutz/pen/VwYeYEE
+        // Reference: https://stackoverflow.com/questions/28576636/mouse-click-and-drag-instead-of-horizontal-scroll-bar-to-view-full-content-of-c
         const scroller: any = document.querySelector("#scroller");
         // const output: any = document.querySelector("#output");
         scroller.addEventListener("scroll", (event: any) => {
@@ -73,7 +74,23 @@ const Player = (props: any) => {
 
     const displayBlocks = (num: number) => {
         const blocks = [];
-        blocks.push(<div key="start" className="block-start"></div>)
+        blocks.push(<div key="start" className="block-start">
+            {/* <h6>Drag Left</h6> */}
+            <div id="arrowAnim">
+                <div className="arrowSliding">
+                    <div className="arrow"></div>
+                </div>
+                <div className="arrowSliding delay1">
+                    <div className="arrow"></div>
+                </div>
+                <div className="arrowSliding delay2">
+                    <div className="arrow"></div>
+                </div>
+                <div className="arrowSliding delay3">
+                    <div className="arrow"></div>
+                </div>
+            </div>
+        </div>)
         for (let i = 0; i < Math.ceil(num / 10) - 1; i++) {
             blocks.push(<div key={i} className="block"></div>)
         }
