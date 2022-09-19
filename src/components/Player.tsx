@@ -4,9 +4,11 @@ const Player = (props: any) => {
     const { data: obj } = props;
     const [state, setState] = useState<any>();
     const [timeInSeconds, setTimeInSeconds] = useState<number>(0);
+    const [playStatus, setPlayStatus] = useState(true);
     const videoRef = useRef<any>();
     const onTimeUpdate = () => {
         if (videoRef && videoRef.current) {
+            if (videoRef.current.currentTime === videoRef.current.duration) setPlayStatus(false);
             // console.log("videoRef.current.currentTime", videoRef.current.currentTime)
             setTimeInSeconds(videoRef.current.currentTime)
             const scroller: any = document.querySelector("#scroller");
@@ -97,6 +99,14 @@ const Player = (props: any) => {
         blocks.push(<div key="end" className="block-end"></div>)
         return blocks
     }
+
+    const handlePlayStatus = () => {
+        if (playStatus) videoRef.current.pause()
+        else videoRef.current.play()
+        setPlayStatus(!playStatus)
+    }
+
+
     return (<div className="Player">
         <video
             onTimeUpdate={onTimeUpdate}
@@ -111,7 +121,7 @@ const Player = (props: any) => {
             Your browser does not support the video tag.
         </video>
         {/* Time Label */}
-        {videoRef && videoRef.current && <h3>{state}</h3>}
+        {videoRef && videoRef.current && <div className="text-bubble"><p>{state}</p></div>}
         {/* Timeline */}
         {/* <div id="output">scrollLeft: 0</div> */}
         <div id="container">
@@ -121,6 +131,19 @@ const Player = (props: any) => {
                     {videoRef && videoRef.current && videoRef.current.duration && displayBlocks(videoRef.current.duration)}
                 </div>
             </div>
+        </div>
+
+        <div>
+            <div><button className="playStatus" onClick={handlePlayStatus}>
+                {/* {playStatus ? "Pause" : "Play"} */}
+                {playStatus ?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-pause" viewBox="0 0 16 16"> <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" /> </svg>
+                    :
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-play" viewBox="0 0 16 16"> <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" /> </svg>
+
+                }
+
+            </button></div>
         </div>
     </div>)
 }
