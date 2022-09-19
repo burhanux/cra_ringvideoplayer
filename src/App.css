@@ -1,42 +1,30 @@
-/* div.scroll {
-    margin: 4px, 4px;
-    padding: 4px;
-    background-color: #08c708;
-    width: 300px;
-    overflow: auto;
-    white-space: nowrap;
-} */
-
-/* #scroller {
-    overflow: scroll;
-    height: 150px;
-    width: 150px;
-    border: 5px dashed orange;
-  } */
-  
   body{
     width: 100%;
+    height:100vh;
     margin: 0 auto;
     text-align: center;
+    background-color: black;
+    color:azure;
+  }
+
+  .Player{
+    margin-top:2rem;
   }
 
   #container{
     position: relative;
-    /* width: 300px; */
     max-width: 300px;
-    /* overflow: overlay; */
     margin:0 auto;
   }
+
   #scroller {
     position: relative;
     overflow: scroll;
     white-space: nowrap;
     width: 300px;
-    border: 2px dashed orange;
-    /* background-color: #08c708; */
     z-index: 1;
-    /* padding:0; */
-    
+    border:2px solid rgb(144, 140, 140);
+    border-radius: 20px;
   }
   
   #output {
@@ -47,11 +35,11 @@
     position: absolute;
     height:80px;
     width: 5px;
-    background-color:black;
     left:50%;
     top:-10px;
     z-index: 99;
     pointer-events: none;
+    background-color: azure;
   }
   
 
@@ -64,45 +52,33 @@
     height: 0px;
   }
   
-  /* #scroller::-webkit-scrollbar-track-piece
-  {
-     display:none;
-  } */
-
 .blocks{
     display: flex;
     padding:0;
 }
 
+
+.block-start, .block-end, .block {
+  /* background-color: rgb(83, 83, 83);; */
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  padding:0;
+}
+
+.block{
+  background-color: blue;
+  width:8px;
+  min-width:8px;
+  border-right:2px solid black;
+}
+
 .block-start{
-    cursor: pointer;
-    display: block;
-    background-color: red;
-    height: 50px;
     min-width:148px;
     border-right:2px solid black;
-    padding:0;
   } 
 
   .block-end{
-    cursor: pointer;
-    display: block;
-    background-color: red;
-    height: 50px;
     min-width:130px;
     border-right:4px solid black;
-    padding:0;
   } 
-
-
-
-.block{
-    cursor: pointer;
-    display: block;
-    background-color: blue;
-    height: 50px;
-    width:8px;
-    min-width:8px;
-    border-right:2px solid black;
-    padding:0;
-  }
